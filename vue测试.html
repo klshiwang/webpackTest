@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p v-cloak>{{msg}}</p>
+
+        <p v-once v-text="msg"></p>
+        <p v-html="h1"></p>
+        <p v-pre>{{msg}}</p>
+        <input type="text" v-model="msg">
+
+
+        <input type="button" v-on:click="num++" value="单击计数">
+        <input type="button" @click="num++" value="单击计数2">
+
+        <input type="button" v-on:click="handle" value="单击计数">
+        <input type="button" @click="handle(123,456,$event)" value="单击计数2">
+        <span v-text="num"></span>
+        <div @click="handle0">
+            <input type="submit" value="确定" @click.stop="handle1">
+            <a href="#" @click.prevent="handle2()">点击链接</a>
+        </div>
+    </div>
+
+
+    <script src="./js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello',
+                h1: '<h1>标题</h1>',
+                num: 0
+            },
+            methods: {
+                handle: function(p1, p2, event) {
+                    console.log(123);
+                    console.log(event.target.innerHTML);
+                    this.num++;
+                },
+                handle0: function() {
+                    console.log('点击了div');
+                },
+                handle1: function() {
+                    console.log('点击了按键');
+                    // event.stopPropagation();
+                },
+                handle2: function() {
+                    console.log('点击了链接');
+                    event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

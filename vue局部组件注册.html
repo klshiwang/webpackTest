@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <hello-world></hello-world>
+        <hello-tom></hello-tom>
+        <hello-jarry></hello-jarry>
+        <global-part></global-part>
+
+
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('global-part', {
+            template: `
+            <div>全局组件</div>
+           
+            `
+        });
+
+        var helloWorld = {
+            data: function() {
+                return {
+                    msg: 'helloWorld'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var helloTom = {
+            data: function() {
+                return {
+                    msg: 'helloTom'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var helloJarry = {
+            data: function() {
+                return {
+                    msg: 'helloJarry'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            components: {
+                'hello-world': helloWorld,
+                'hello-tom': helloTom,
+                'hello-jarry': helloJarry
+            }
+        });
+    </script>
+</body>
+
+</html>

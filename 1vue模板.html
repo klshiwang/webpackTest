@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="name"></input>
+        
+    </div>
+    
+    
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.prototype.$abc = "abc"
+
+        let vm = new Vue({
+            el: "#app",
+            watch:{
+                name(newName,oldName){
+                    console.log("newName",newName);
+                    console.log("oldName",oldName);
+                }
+            },
+            data: {
+                name: "老王",
+                age: 18
+            }
+        });
+        
+        console.log("--vm--:");
+        console.dir(vm);
+        console.log(vm.$abc);
+    </script>
+</body>
+
+</html>

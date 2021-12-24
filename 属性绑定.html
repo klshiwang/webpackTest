@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="url" v-text="site"></a>
+        <a :href="url" v-text="site"></a>
+        <input type="button" @click="change()" :value="btnTxt">
+    </div>
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vue = new Vue({
+        el: "#app",
+        data: {
+            url: 'http://www.baidu.com',
+            site: '百度',
+            btnTxt: '换成新浪'
+        },
+        methods: {
+            change: function() {
+                if (this.btnTxt == '换成新浪') {
+                    this.url = 'http://www.sina.com.cn';
+                    this.site = '新浪';
+                    this.btnTxt = '换成百度';
+                } else {
+                    this.url = 'http://www.baidu.com';
+                    this.site = '百度';
+                    this.btnTxt = '换成新浪';
+                }
+            }
+        }
+    });
+</script>
+
+</html>

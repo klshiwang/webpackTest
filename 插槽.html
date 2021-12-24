@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>app内容</div>
+        <my-component>
+            <em slot="slot1">这是插入到插槽1中的内容</em>
+            <strong slot="slot1">这也是插入到插槽1中的内容</strong>
+            <p slot="slot2">这是插入到插槽2的位置的内容</p>
+
+            <template slot="slot3">
+                <h3>template里的所有内容都将被插入到插槽3的位置</h3>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </template>
+
+
+            <template>
+                <div>
+                    这里的内容会插入到默认插槽中，也就是没有命名的插槽中。
+                </div>
+            </template>
+        </my-component>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            data: function() {
+                return {
+
+                }
+            },
+            template: `
+                <div> 
+                    <h1>标题</h1>
+                    <span>插槽1的位置：</span>
+                    <slot name="slot1"></slot>
+                    <br>
+                    <span>插槽2的位置：</span>
+                    <slot name="slot2"></slot>
+                    <div>插槽3的位置：</div>
+                    <slot name="slot3">插槽3默认内容</slot>
+                    <slot></slot>
+                </div>
+             `
+
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+
+        });
+    </script>
+</body>
+
+</html>

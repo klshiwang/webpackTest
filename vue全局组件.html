@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>总的点击次数:<span>{{total}}</span></p>
+        <button-counter @update-total="handle" ></button-counter>
+        <button-counter @update-total="handle"></button-counter>
+        <button-counter @update-total="handle"></button-counter>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('button-counter', {
+            data: function() {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button @click="handle()">点击了{{count}}次</button>',
+            methods: {
+                handle: function() {
+                    this.count++;
+                    this.$emit("update-total",this.count);
+                }
+            }
+
+        })
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                total:0,
+                count1:0,
+                count2:0,
+                count3:0
+            },
+            computed:{
+                totalCount(){
+                    return this.count1 + this.count2 + this.count3;
+                }
+            },
+            methods:{
+                handle(count){
+                    this.total ++; 
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

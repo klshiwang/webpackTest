@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        用户名:<input type="text" v-model="uname" @keyup.aaa="aaafn($event)">
+        <br>密码:<input type="password" v-model="pwd" @keyup.delete="clearpwd()" @keyup.enter="confirm()">
+        <input type="button" value="提交" @click="confirm()">
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.config.keyCodes.aaa = 65; //自定义热键修饰符
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                uname: "",
+                pwd: ""
+            },
+            methods: {
+                confirm: function() {
+                    console.log(this.uname, this.pwd);
+                },
+                clearpwd: function() {
+                    this.pwd = "";
+                },
+                aaafn: function(e) {
+                    console.log(e.key, e.keyCode);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

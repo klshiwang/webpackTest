@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <son-component :title="smsg" content="通过第2个属性传值"></son-component>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('son-component', {
+            props: ['title', 'content'], //接收父组件通过属性传过来的值
+            data: function() {
+                return {
+                    msg: '子组件内容'
+                }
+            },
+            template: '<div>{{msg+"---"+title+"--"+content}}</div>'
+        })
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: '父组件数据',
+                smsg: '父组件通过属性传值给子组件'
+            }
+        });
+    </script>
+</body>
+
+</html>

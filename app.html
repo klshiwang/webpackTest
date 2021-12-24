@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        
+        <my-nav></my-nav>
+        <div is="my-list"></div>
+        <!-- <div :is="currentRoute" class="content">
+            
+        </div> -->
+    </div>
+
+</body>
+<script src="./main.js" type="module"></script>
+<script>
+
+
+    Vue.component('my-list',goodsList);
+
+     Vue.component('my-nav',{
+        template:`
+        <div class="nav">
+            
+            <ul>
+                <li>
+                    <a href="#/home">首页</a>
+                </li>
+                <li>
+                    <a href="#/goods-list">产品列表</a>
+                </li>
+                <li>
+                    <a href="#/goods-pics">产品图库</a>
+                </li>
+                <li>
+                    <a href="#/about-us">关于我们</a>
+                </li>
+            </ul>
+        </div>
+        
+        `,
+        data() {
+            return {
+                
+            }
+        }
+        
+    });
+
+    Vue.component('home',{
+        template:`
+        <div>首页内容</div>
+        `,
+        data() {
+            return {
+                
+            }
+        }
+        
+    });
+
+    Vue.component('goods-list',{
+        template:`
+        <div>商品列表页面内容</div>
+        `,
+        data() {
+            return {
+                
+            }
+        }
+        
+    });
+
+    Vue.component('about-us',{
+        template:`
+        <div>关于我们页面内容</div>
+        `,
+        data() {
+            return {
+                
+            }
+        }
+        
+    });
+    
+    const vm = new Vue({
+        el:"#app",
+        
+        data() {
+            return {
+                currentRoute:"goods-list",
+                title:"某某在线商城"
+            }
+        },
+       
+        methods: {
+           
+        },
+        mounted() {
+            _this = this;
+            window.onhashchange = function(){
+                console.log(location.hash);
+                _this.currentRoute = location.hash.substr(2);
+                console.log(_this.currentRoute)
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p :style="styleObj">style样式</p>
+        <input type="button" value="改变样式" @click="handle()">
+    </div>
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            styleObj: {
+                border: '1px solid red',
+                width: '100px',
+                height: '200px',
+            }
+        },
+        methods: {
+            handle: function() {
+                this.styleObj.width = '200px';
+            }
+        }
+    });
+</script>
+
+</html>
