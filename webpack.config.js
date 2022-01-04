@@ -3,7 +3,7 @@ const {VueLoaderPlugin} = require('vue-loader')   //使用vue-loader需要引入
 // html-webpack-plugin插件会自动生成html文件,并在body里加入script引入bundle.js,如果entry中有多个入口,都会自动引入
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 
-console.log(path.join(__dirname,'src','main.js') )
+
 
 module.exports = {
   entry: path.join(__dirname,'src','main.js'),  
@@ -32,9 +32,9 @@ module.exports = {
     port:5555,
     // contentBase:'./dist'   //官网上是这样写的,但实际这样会报错, 应该像下面这样写
     static:{
-      directory:path.join(__dirname)
+      directory:path.join(__dirname)  //静态资源的目录
     },
-    open:true
+    open:true  //支行后自动打开
   },
 
   plugins:[
